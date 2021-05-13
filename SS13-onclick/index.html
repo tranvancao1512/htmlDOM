@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+</head>
+
+<body>
+    <input type="text" id="new-item" />
+    <button id="add-btn" type="">ADD</button>
+    <ul id="todo-list">
+
+    </ul>
+    <script type="text/javascript">
+        var todoList = [
+            'Take show',
+            'Have a walk',
+            'Go to bed'
+        ];
+
+
+        var addBtn = document.getElementById('add-btn');
+        // addBtn.onclick = addItem;
+        // addBtn strigger a click envent
+        addBtn.addEventListener('click', addItem)
+            // a click event is trigged
+        addBtn.addEventListener('click', function() {
+            console.log('Add button is strigered');
+        })
+
+        function addItem() {
+            // console.log('add item.......');
+            // get value of the input
+            var input = document.getElementById('new-item')
+            var newItem = input.value;
+            // add todoList array
+            todoList.push(newItem);
+            // render
+            render();
+            // claer input
+            input.value = '';
+        };
+
+        function render() {
+            var htmlList = document.getElementById('todo-list');
+            var content = todoList.map(function(item) {
+                return '<li>' + item + '</li>';
+            });
+
+
+            htmlList.innerHTML = content.join('');
+        }
+        render();
+    </script>
+
+</body>
+
+</html>
